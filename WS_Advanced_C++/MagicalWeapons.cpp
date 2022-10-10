@@ -4,11 +4,19 @@ MagicalWeapons::MagicalWeapons() : Weapon()
 {
 }
 
-MagicalWeapons::MagicalWeapons(string itemName, string itemDescription, string magicalWeaponName, string magicalWeaponDescription, bool weaponPos, WeaponType type, float weight, float damages, float buyingCost, float durability) : Weapon(itemName, itemDescription, type, weight, damages, buyingCost, durability)
+MagicalWeapons::MagicalWeapons(string itemName, string itemDescription, string magicalWeaponName, string magicalWeaponDescription, float magicalDamages, MagicTypes magicTypes, WeaponType type, float weight, float damages, float buyingCost, float durability) : Weapon(itemName, itemDescription, type, weight, damages, buyingCost, durability)
 {
 	mMagicalWeaponName = magicalWeaponName;
 	mMagicalWeaponDescription = magicalWeaponDescription;
-	mWeaponPos = weaponPos;
+	mMagicTypes = magicTypes;
+	if (magicalDamages > 0 && magicalDamages <= 5)
+		mMagicalWeaponDamages = magicalDamages;
+	else
+		cout << "Magic damages: " << magicalDamages << " is not between 1 and 5." << endl;
+}
+
+MagicalWeapons::~MagicalWeapons()
+{
 }
 
 string MagicalWeapons::GetMagicalWeaponName()
@@ -26,14 +34,19 @@ float MagicalWeapons::GetMagicalWeaponDamages()
 	return mMagicalWeaponDamages;
 }
 
-bool MagicalWeapons::GetWeaponPos()
+MagicTypes MagicalWeapons::GetMagicTypes()
 {
-	return mWeaponPos;
+	return mMagicTypes;
 }
 
-void MagicalWeapons::SetWeaponPos(bool weaponPos)
+bool MagicalWeapons::IsActive()
 {
-	mWeaponPos = weaponPos;
+	return mActive;
+}
+
+void MagicalWeapons::SetMagicalTypes(MagicTypes magicTypes)
+{
+	mMagicTypes = magicTypes;
 }
 
 void MagicalWeapons::SetMagicalWeaponDamages(float magicalWeaponDamages)
@@ -41,14 +54,13 @@ void MagicalWeapons::SetMagicalWeaponDamages(float magicalWeaponDamages)
 	mMagicalWeaponDamages = magicalWeaponDamages;
 }
 
-void MagicalWeapons::InteractionWeaponPoints(Creature* creature)
+void MagicalWeapons::MagicEffect(Creature* creature)
 {
-	if (mWeaponPos)
-	{
-		creature->SetTotalDamage(creature->GetTotalDamage() + mMagicalWeaponDamages);
-	}
-	else
-	{
-		creature->CreatureHeal(mMagicalWeaponDamages);
-	}
+	creature->SetTotalDamage(creature->GetTotalDamage() + mMagicalWeaponDamages);
+	mActive = true;
+}
+
+void MagicalWeapons::SetActive(bool active)
+{
+	mActive = active;
 }

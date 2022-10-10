@@ -5,5 +5,6 @@ enum DamageTypes
 	Slashing,
 	Piercing,
 	Burning,
-	Bludgeoning
+	Bludgeoning,
+	Default
 };

@@ -41,7 +41,7 @@ Character::Character(string creatureName, string creatureDescription, float crea
 	mCharacterClass = characterClass;
 }
 
-Character::Character(string creatureName, string creatureDescription, float creatureHealthPoints, vector<Attacks*> attacks, float defenseScore, string lastName, string catchPhrase, float money, Weapon* weapon, Race race, CharacterClass characterClass) : Creature(creatureName, creatureDescription, creatureHealthPoints, attacks, defenseScore)
+/*Character::Character(string creatureName, string creatureDescription, float creatureHealthPoints, vector<Attacks*> attacks, float defenseScore, string lastName, string catchPhrase, float money, Weapon* weapon, Race race, CharacterClass characterClass) : Creature(creatureName, creatureDescription, creatureHealthPoints, attacks, defenseScore)
 {
 	mLastName = lastName;
 	mCatchPhrase = catchPhrase;
@@ -49,7 +49,7 @@ Character::Character(string creatureName, string creatureDescription, float crea
 	mWeapon = weapon;
 	mRace = race;
 	mCharacterClass = characterClass;
-}
+}*/
 
 Character::~Character()
 {
@@ -128,13 +128,13 @@ void Character::Introduce()
 	}
 
 	cout << mCatchPhrase << " I'm " << mCreatureName << " " << mLastName << " a/an " << race << " " << characterClass << " class " << endl;
-	cout << "I have ";
+	cout << "I possess ";
 	if(mWeapon != nullptr)
 	{
 		mWeapon->ToString();
 		cout << " and ";
 	}
-	cout << mMoney << " golds." << endl;
+	cout << mMoney << " money" << endl;
 }
 
 void Character::Buy(Weapon* weapon, Merchant* merchant)
@@ -154,14 +154,14 @@ void Character::Buy(Weapon* weapon, Merchant* merchant)
 			cout << mCreatureName << " can't buy this weapon." << endl;
 	}
 	else
-		cout << weapon->GetItemName() << " can't buy from " << merchant->GetName() << ".\n";
+		cout << weapon->GetItemName() << " can't buy from " << merchant->GetMerchantName() << ".\n";
 }
 
 void Character::Sell(Merchant* merchant)
 {
 	if (mWeapon != nullptr) {
 		float finalCost = GetWeapon()->GetItemBuyingCost() / (1 - GetWeapon()->GetDamages());
-		if ((merchant->GetMoney() - finalCost) >= 0)
+		if ((merchant->GetMerchantMoney() - finalCost) >= 0)
 		{
 			merchant->RemoveMoney(finalCost);
 			AddMoney(finalCost);
@@ -170,10 +170,15 @@ void Character::Sell(Merchant* merchant)
 			cout << mCreatureName << " has sell his weapon.\n";
 		}
 		else
-			cout << merchant->GetName() << " can't buy your weapon." << endl;
+			cout << merchant->GetMerchantName() << " can't buy your weapon." << endl;
 	}
 	else
 		cout << mCreatureName << " doesn't have weapon." << endl;
+}
+
+uint8_t Character::GetRace()
+{
+	return mRace;
 }
 
 

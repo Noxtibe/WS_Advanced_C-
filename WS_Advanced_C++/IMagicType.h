@@ -5,5 +5,5 @@ class IMagicType
 public :
 
 	virtual ~IMagicType();
-	virtual void InteractionPoints() = 0;
+	virtual void MagicEffect() = 0;
 };

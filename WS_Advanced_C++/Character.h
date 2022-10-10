@@ -25,7 +25,7 @@ public:
 	Character();
 	Character(string creatureName, string creatureDescription, float creatureHealthPoints, float creatureMaxHealthPoints, vector<Attacks*> attacks, float defenseScore, string lastName, string catchPhrase, float money, Race race, CharacterClass characterClass);
 	Character(string creatureName, string creatureDescription, float creatureHealthPoints, float defenseScore, string lastName, string catchPhrase, float money, Weapon* weapon, Race race, CharacterClass characterClass);
-	Character(string creatureName, string creatureDescription, float creatureHealthPoints, vector<Attacks*> attacks, float defenseScore, string lastName, string catchPhrase, float money, Weapon* weapon, Race race, CharacterClass characterClass);
+	//Character(string creatureName, string creatureDescription, float creatureHealthPoints, vector<Attacks*> attacks, float defenseScore, string lastName, string catchPhrase, float money, Weapon* weapon, Race race, CharacterClass characterClass);
 	~Character();
 
 	float GetMoney();
@@ -37,6 +37,8 @@ public:
 	void Introduce();
 	void Buy(Weapon* weapon, Merchant* merchant);
 	void Sell(Merchant* merchant);
+
+	uint8_t GetRace();
 };
 
 

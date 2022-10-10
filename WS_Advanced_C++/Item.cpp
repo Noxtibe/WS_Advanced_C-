@@ -2,6 +2,10 @@
 
 Item::Item()
 {
+	mItemName = "";
+	mItemDescription = "";
+	mItemWeight = 0;
+	mItemBuyingCost = 0;
 }
 
 Item::Item(string itemName, string itemDescription, float itemWeight)

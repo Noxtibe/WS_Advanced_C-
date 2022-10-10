@@ -39,7 +39,7 @@ float Merchant::GetMerchantMoney()
 	return mMerchantMoney;
 }
 
-int Merchant::GetNbWeapon()
+size_t Merchant::GetWeapon()
 {
 	return mInventory.size();
 }

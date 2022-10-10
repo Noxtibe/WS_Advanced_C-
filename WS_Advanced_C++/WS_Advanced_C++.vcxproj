@@ -133,10 +133,10 @@
     <ClInclude Include="Creature.h" />
     <ClInclude Include="DamageTypes.h" />
     <ClInclude Include="IMagicType.h" />
-    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="MagicalItems.h" />
     <ClInclude Include="MagicalWeapons.h" />
+    <ClInclude Include="MagicTypes.h" />
     <ClInclude Include="Merchant.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Race.h" />

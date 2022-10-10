@@ -1,6 +1,7 @@
 #pragma once
 #include "Item.h"
 #include"IMagicType.h"
+#include "MagicTypes.h"
 #include "Creature.h"
 
 class MagicalItems : public Item, IMagicType
@@ -9,21 +10,20 @@ protected :
 
 	string mMagicalItemName;
 	string mMagicalItemDescription;
+	MagicTypes mMagicTypes;
 	float mMagicalDamages;
-	bool mPos;
 
 public :
 
 	MagicalItems();
-	MagicalItems(string itemName, string itemDescription, string magicalItemName, string magicalItemDescription, float magicalDamages, bool pos, float itemWeight, float itemBuyingCost);
+	MagicalItems(string itemName, string itemDescription, string magicalItemName, string magicalItemDescription, MagicTypes magicTypes, float magicalDamages, float itemWeight, float itemBuyingCost);
 
 	string GetMagicalItemName();
 	string GetMagicalItemDescription();
+	MagicTypes GetMagicTypes();
 	float GetMagicalDamages();
-	bool GetPos();
 
-	void SetPos(bool pos);
 	void SetMagicalDamages(float magicalDamages);
-	void InteractionPoints(Creature* creature);
+	void MagicEffect(Creature* creature);
 };
 

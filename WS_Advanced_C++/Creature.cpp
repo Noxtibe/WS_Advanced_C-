@@ -33,6 +33,33 @@ Creature::Creature(string creatureName, string creatureDescription, float creatu
 		cout << defenseScore << " FAILED !\n";
 }
 
+Creature::Creature(string creatureName, string creatureDescription, float creatureHealthPoints, vector<Item*> inventory, float defenseScore)
+{
+	mCreatureName = creatureName;
+	mCreatureDescription = creatureDescription;
+	mCreatureHealthPoints = creatureHealthPoints;
+	mCreatureMaxHealthPoints = creatureHealthPoints;
+	mInventory = inventory;
+	if (defenseScore > 0 && defenseScore <= 20)
+		mDefenseScore = defenseScore;
+	else
+		cout << defenseScore << " FAILED !\n";
+}
+
+Creature::Creature(string creatureName, string creatureDescription, float creatureHealthPoints, vector<Attacks*> attacks, vector<Item*> inventory, float defenseScore)
+{
+	mCreatureName = creatureName;
+	mCreatureDescription = creatureDescription;
+	mCreatureHealthPoints = creatureHealthPoints;
+	mCreatureMaxHealthPoints = creatureHealthPoints;
+	mAttacks = attacks;
+	mInventory = inventory;
+	if (defenseScore > 0 && defenseScore <= 20)
+		mDefenseScore = defenseScore;
+	else
+		cout << defenseScore << " FAILED !\n";
+}
+
 Creature::~Creature()
 {
 }
@@ -67,12 +94,22 @@ int Creature::GetTotalDamage()
 	return mAllDamages;
 }
 
+vector<Item*> Creature::GetInventory()
+{
+	return mInventory;
+}
+
+size_t Creature::GetLoot()
+{
+	return mInventory.size();
+}
+
 void Creature::SetDefenseScore(float defenseScore)
 {
 	mDefenseScore -= defenseScore;
 }
 
-void Creature::SetDescription(string creatureDescription)
+void Creature::SetCreatureDescription(string creatureDescription)
 {
 	mCreatureDescription = creatureDescription;
 }
@@ -80,6 +117,11 @@ void Creature::SetDescription(string creatureDescription)
 void Creature::SetCreatureHeatlhPoints(float healthPoints)
 {
 	mCreatureHealthPoints = healthPoints;
+}
+
+void Creature::SetCreatureMaxHealthPoints(float creatureMaxHealthPoints)
+{
+	mCreatureMaxHealthPoints = creatureMaxHealthPoints;
 }
 
 void Creature::SetTotalDamage(int allDamages)
@@ -152,7 +194,31 @@ void Creature::RemoveAttack(Attacks* attacks)
 	if (position >= 0)
 		mAttacks.erase(mAttacks.begin() + position);
 	else
-		cout << "Missing attack" << endl;
+		cout << "Missing attack..." << endl;
+}
+
+void Creature::AddItem(Item* item)
+{
+	mInventory.push_back(item);
+	cout << "Got a new item " << item->GetItemName() << " to " << GetCreatureName() << endl;
+}
+
+void Creature::RemoveItem(Item* item)
+{
+	int position = -1;
+	for (int i = 0; i < mInventory.size(); i++)
+	{
+		if (mInventory[i]->GetItemName() == item->GetItemName())
+			position = i;
+	}
+
+	if (position >= 0)
+	{
+		mInventory.erase(mInventory.begin() + position);
+		cout << "Delete " << item->GetItemName() << " from " << GetCreatureName() << endl;
+	}
+	else
+		cout << "Missing item..." << endl;
 }
 
 // BASE ATTACKS

@@ -22,8 +22,8 @@ public:
 
 	string GetMerchantName();
 	float GetMerchantMoney();
-	int GetNbWeapon();
 	bool WeaponInInventory(Weapon* weapon);
+	size_t GetWeapon();
 
 	void AddMoney(float money);
 	void RemoveMoney(float money);

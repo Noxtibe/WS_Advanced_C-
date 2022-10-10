@@ -52,9 +52,9 @@ int main()
 
     // SET UP CHARA, WEAPONS AND ATTACKS
 
-    Weapon weapon1 = Weapon("Buster Sword", Sword, 100, 1000, 5000, 1);
-    Weapon weapon2 = Weapon("Black Materia", Staff, 1, 9999, 10000, 1);
-    Weapon weapon3 = Weapon("Lava Tear", Staff, 1, 100, 200, 1);
+    Weapon weapon1 = Weapon("Buster Sword", "", Sword, 100, 1000, 5000, 1);
+    Weapon weapon2 = Weapon("Black Materia", "", Staff, 1, 9999, 10000, 1);
+    Weapon weapon3 = Weapon("Lava Tear", "", Staff, 1, 100, 200, 1);
 
 
 

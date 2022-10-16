@@ -52,6 +52,10 @@ int main()
 
     // SET UP CHARA, WEAPONS AND ATTACKS
 
+    Character character1 = Character("Fried", "Frid");
+    Character character2 = Character("Vahn", "FF", "Hello", 200, 100, &weapon1, Human, Paladin);
+
+    // character2.Introduce();
     Weapon weapon1 = Weapon("Buster Sword", "", Sword, 100, 1000, 5000, 1);
     Weapon weapon2 = Weapon("Black Materia", "", Staff, 1, 9999, 10000, 1);
     Weapon weapon3 = Weapon("Lava Tear", "", Staff, 1, 100, 200, 1);
